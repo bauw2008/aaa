@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Trime IME Test</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .fake-input {
+      border: 1px solid #ccc;
+      padding: 10px;
+      width: 90%;
+      margin: 50px auto;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div class="fake-input" id="chatInput">点击这里输入...</div>
+
+  <script>
+    const fakeInput = document.getElementById('chatInput');
+
+    fakeInput.addEventListener('click', () => {
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.style.position = 'absolute';
+      input.style.top = '100px';
+      input.style.left = '-9999px'; // 放到看不见的位置
+      document.body.appendChild(input);
+      input.focus();
+
+      // 模拟 Yandex 的行为：100ms 后 blur 掉
+      setTimeout(() => {
+        input.blur();
+        document.body.removeChild(input);
+      }, 100);
+    });
+  </script>
+</body>
+</html>
