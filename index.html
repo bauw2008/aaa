@@ -1,40 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Trime IME Test</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    。fake-input {
-      border: 1px solid #ccc;
-      padding: 10px;
-      width: 90%;
-      margin: 50px auto;
-      font-size: 18px;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <title> 对比复现</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+    }
+
+    .editor {
+      border: 1px solid #ccc;
+      padding: 12px;
+      width: 100%;
+      max-width: 400px;
+      min-height: 80px;
+      font-size: 18px;
+      margin-bottom: 32px;
+    }
+
+    .widget {
+      display: inline-block;
+      padding: 2px 6px;
+      background-color: #eee;
+      border-radius: 4px;
+      user-select: none;
+      pointer-events: none;
+      opacity: 0.6;
+    }
+
+    h3 {
+      margin-bottom: 8px;
+    }
+  </style>
 </head>
 <body>
-  <div class="fake-input" id="chatInput">点击这里输入...</div>
 
-  <script>
-    const fakeInput = document.getElementById('chatInput');
+<h2>IME 中文输入法对比测试</h2>
 
-    fakeInput.addEventListener('click', () => {
-      const input = document.createElement('input');
-      input.type = 'text';
-      input.style.position = 'absolute';
-      input.style.top = '100px';
-      input.style.left = '-9999px'; // 放到看不见的位置
-      document.body.appendChild(input);
-      input.focus();
+<h3>❌ Bug：含 contenteditable=false 的 Message 占位符</h3>
+<div class="editor" id="editor1" contenteditable="true">
+  <p id="para1">
+    <span id="placeholder" class="widget" contenteditable="false">Message</span>
+  </p>
+</div>
 
-      // 模拟 Yandex 的行为：100ms 后 blur 掉
-      setTimeout(() => {
-        input.blur();
-        document.body.removeChild(input);
-      }, 100);
-    });
-  </script>
+<h3>✅ 正常版本：不含占位符（空段落）</h3>
+<div class="editor" id="editor2" contenteditable="true">
+  <p id="para2"><br></p>
+</div>
+
+<p><strong>测试步骤：</strong></p>
+<ol>
+  <li>在手机浏览器打开本页</li>
+  <li>点击上面两个输入框</li>
+  <li>切换中文输入法</li>
+  <li>尝试输入内容</li>
+</ol>
+
+<p><strong>预期行为：</strong></p>
+<ul>
+  <li><strong>上方有 Message 的区域：</strong>中文输入法候选框无法弹出（光标在 widget 前）</li>
+  <li><strong>下方空区域：</strong>输入法正常弹出候选框</li>
+</ul>
+
+<script>
+  window.onload = () => {
+    // 设置光标在有 Message 的版本中，widget 之前
+    const para1 = document.getElementById('para1');
+    const sel = window.getSelection();
+    const range = document.createRange();
+
+    range.setStart(para1, 0); // placeholder 前
+    range.collapse(true);
+    sel.removeAllRanges();
+    sel.addRange(range);
+
+    document.getElementById('editor1').focus();
+  };
+</script>
+
 </body>
 </html>
