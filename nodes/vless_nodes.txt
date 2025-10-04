@@ -1,0 +1,7 @@
+# VLESS 节点列表
+# 更新时间: 2025-10-04 07:28:55
+# 数量: 3
+
+vless://12345678-1234-1234-1234-123456789123@154.219.5.53:2096?encryption=none&security=tls&sni=abcd.freewarp.eu.org&type=ws&host=abcd.freewarp.eu.org&path=%2Fsnippets#%E7%BE%8E%E5%9B%BD
+vless://12345678-1234-1234-1234-123456789123@8.34.146.53:2096?encryption=none&security=tls&sni=abcd.freewarp.eu.org&type=ws&host=abcd.freewarp.eu.org&path=%2Fsnippets#%E7%BE%8E%E5%9B%BD
+vless://12345678-1234-1234-1234-123456789123@46.202.30.53:2096?encryption=none&security=tls&sni=abcd.freewarp.eu.org&type=ws&host=abcd.freewarp.eu.org&path=%2Fsnippets#%E7%BE%8E%E5%9B%BD
