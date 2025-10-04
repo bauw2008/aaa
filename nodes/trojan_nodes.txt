@@ -1,5 +1,5 @@
 # TROJAN 节点列表
-# 更新时间: 2025-10-04 07:28:55
+# 更新时间: 2025-10-04 07:29:23
 # 数量: 1
 
 trojan://ad9c84af-e5aa-43e2-88df-7cfd99d4d0a0@bestcdn1.682637.xyz:443?security=tls&sni=d3-cdn.682637.xyz&type=ws&host=d3-cdn.682637.xyz&path=%2Fvideomuaawe#%E7%BE%8E%E5%9B%BD
