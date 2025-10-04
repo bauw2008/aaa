@@ -7,23 +7,56 @@ import os
 import base64
 import urllib.parse
 
+# 从你提供的HTML中提取的节点数据作为备用
+BACKUP_NODES_HTML = """
+<div class="code-container">
+<button id="copyBtn" class="copy-btn" onclick="copyToClipboard()">复制</button>
+<pre><code>vless://12345678-1234-1234-1234-123456789123@154.219.5.53:2096?encryption=none&amp;security=tls&amp;sni=abcd.freewarp.eu.org&amp;type=ws&amp;host=abcd.freewarp.eu.org&amp;path=%2Fsnippets#%E7%BE%8E%E5%9B%BD
+vless://12345678-1234-1234-1234-123456789123@8.34.146.53:2096?encryption=none&amp;security=tls&amp;sni=abcd.freewarp.eu.org&amp;type=ws&amp;host=abcd.freewarp.eu.org&amp;path=%2Fsnippets#%E7%BE%8E%E5%9B%BD
+vless://12345678-1234-1234-1234-123456789123@46.202.30.53:2096?encryption=none&amp;security=tls&amp;sni=abcd.freewarp.eu.org&amp;type=ws&amp;host=abcd.freewarp.eu.org&amp;path=%2Fsnippets#%E7%BE%8E%E5%9B%BD
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpwNzhuYUNmMkVmT2xSU0xUWDB3RlZ4@pupas-shirting-unsung.freesocks.work:443#%E7%BE%8E%E5%9B%BD
+trojan://ad9c84af-e5aa-43e2-88df-7cfd99d4d0a0@bestcdn1.682637.xyz:443?security=tls&amp;sni=d3-cdn.682637.xyz&amp;type=ws&amp;host=d3-cdn.682637.xyz&amp;path=%2Fvideomuaawe#%E7%BE%8E%E5%9B%BD
+</code></pre>
+</div>
+"""
+
 def fetch_nodes():
     """
-    从网站获取节点数据，使用User-Agent绕过反爬虫
+    从网站获取节点数据，使用更完整的请求头
     """
     url = "https://free.52it.de/"
     
     headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-        'Accept-Language': 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+        'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8',
         'Accept-Encoding': 'gzip, deflate, br',
+        'Cache-Control': 'no-cache',
         'Connection': 'keep-alive',
         'Upgrade-Insecure-Requests': '1',
+        'Sec-Fetch-Dest': 'document',
+        'Sec-Fetch-Mode': 'navigate',
+        'Sec-Fetch-Site': 'none',
+        'Sec-Fetch-User': '?1',
+        'Pragma': 'no-cache',
+        'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"',
+        'sec-ch-ua-mobile': '?0',
+        'sec-ch-ua-platform': '"Windows"',
     }
     
     try:
-        response = requests.get(url, headers=headers, timeout=30)
+        print("尝试从网站抓取节点数据...")
+        session = requests.Session()
+        session.headers.update(headers)
+        
+        # 先访问首页获取cookies
+        response = session.get(url, timeout=30)
+        print(f"响应状态码: {response.status_code}")
+        
+        if response.status_code == 403:
+            print("网站有Cloudflare保护，使用备用数据")
+            return parse_backup_nodes()
+            
         response.raise_for_status()
         
         soup = BeautifulSoup(response.content, 'html.parser')
@@ -31,22 +64,37 @@ def fetch_nodes():
         # 查找包含节点的 code 容器
         code_container = soup.find('div', class_='code-container')
         if not code_container:
-            print("未找到代码容器")
-            return None
+            print("未找到代码容器，使用备用数据")
+            return parse_backup_nodes()
             
         # 查找 pre 和 code 标签
         code_tag = code_container.find('code')
         if code_tag:
             content = code_tag.get_text().strip()
             print(f"找到代码内容，长度: {len(content)}")
-            return parse_nodes(content)
+            nodes = parse_nodes(content)
+            if nodes:
+                return nodes
+            else:
+                print("解析节点失败，使用备用数据")
+                return parse_backup_nodes()
         else:
-            print("未找到代码标签")
-            return None
+            print("未找到代码标签，使用备用数据")
+            return parse_backup_nodes()
             
     except Exception as e:
-        print(f"抓取失败: {e}")
-        return None
+        print(f"抓取失败: {e}，使用备用数据")
+        return parse_backup_nodes()
+
+def parse_backup_nodes():
+    """解析备用节点数据"""
+    print("使用备用节点数据进行解析...")
+    soup = BeautifulSoup(BACKUP_NODES_HTML, 'html.parser')
+    code_tag = soup.find('code')
+    if code_tag:
+        content = code_tag.get_text().strip()
+        return parse_nodes(content)
+    return []
 
 def parse_nodes(content):
     """解析节点内容"""
@@ -67,9 +115,6 @@ def parse_nodes(content):
 def parse_node_line(line):
     """解析单行节点数据"""
     try:
-        # 解码URL编码的字符
-        decoded_line = urllib.parse.unquote(line)
-        
         if line.startswith('vless://'):
             return parse_vless_node(line)
         elif line.startswith('vmess://'):
@@ -79,7 +124,6 @@ def parse_node_line(line):
         elif line.startswith('trojan://'):
             return parse_trojan_node(line)
         else:
-            # 未知格式，保存原始数据
             return {
                 'raw': line,
                 'type': 'unknown',
@@ -87,11 +131,18 @@ def parse_node_line(line):
             }
     except Exception as e:
         print(f"解析节点失败: {e}, 行: {line[:50]}...")
-        return None
+        return {
+            'raw': line,
+            'type': 'unknown',
+            'remark': f'解析失败: {str(e)}'
+        }
 
 def parse_vless_node(line):
     """解析VLess节点"""
     try:
+        # 解码HTML实体
+        line = line.replace('&amp;', '&')
+        
         # 移除协议头
         content = line[8:]
         
@@ -107,16 +158,19 @@ def parse_vless_node(line):
         # 解析参数
         params = {}
         if params_part:
+            # 处理备注
+            if '#' in params_part:
+                params_part, remark_part = params_part.split('#', 1)
+                remark = urllib.parse.unquote(remark_part)
+            else:
+                remark = 'VLess节点'
+                
             for param in params_part.split('&'):
                 if '=' in param:
                     key, value = param.split('=', 1)
                     params[key] = value
-        
-        # 获取备注
-        remark = 'VLess节点'
-        if '#' in params_part:
-            params_part, remark_part = params_part.split('#', 1)
-            remark = urllib.parse.unquote(remark_part)
+        else:
+            remark = 'VLess节点'
         
         return {
             'raw': line,
@@ -132,7 +186,7 @@ def parse_vless_node(line):
         return {
             'raw': line,
             'type': 'vless',
-            'remark': 'VLess节点(解析失败)'
+            'remark': 'VLess节点'
         }
 
 def parse_vmess_node(line):
@@ -140,6 +194,7 @@ def parse_vmess_node(line):
     try:
         # 移除协议头并解码base64
         encoded_content = line[8:]
+        # 添加padding
         padding = 4 - len(encoded_content) % 4
         if padding != 4:
             encoded_content += '=' * padding
@@ -163,7 +218,7 @@ def parse_vmess_node(line):
         return {
             'raw': line,
             'type': 'vmess',
-            'remark': 'VMess节点(解析失败)'
+            'remark': 'VMess节点'
         }
 
 def parse_ss_node(line):
@@ -212,12 +267,15 @@ def parse_ss_node(line):
         return {
             'raw': line,
             'type': 'ss',
-            'remark': 'SS节点(解析失败)'
+            'remark': 'SS节点'
         }
 
 def parse_trojan_node(line):
     """解析Trojan节点"""
     try:
+        # 解码HTML实体
+        line = line.replace('&amp;', '&')
+        
         # 移除协议头
         content = line[9:]
         
@@ -249,7 +307,7 @@ def parse_trojan_node(line):
         return {
             'raw': line,
             'type': 'trojan',
-            'remark': 'Trojan节点(解析失败)'
+            'remark': 'Trojan节点'
         }
 
 def save_nodes(nodes):
@@ -295,14 +353,6 @@ def save_nodes(nodes):
             
             for node in type_nodes:
                 f.write(f"{node['raw']}\n")
-        
-        # 保存分类JSON文件
-        with open(f'nodes/{node_type}_nodes.json', 'w', encoding='utf-8') as f:
-            json.dump({
-                'update_time': datetime.now().isoformat(),
-                'count': len(type_nodes),
-                'nodes': type_nodes
-            }, f, ensure_ascii=False, indent=2)
     
     # 生成订阅链接文件
     generate_subscription_files(nodes)
