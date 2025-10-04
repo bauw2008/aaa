@@ -1,1 +1,0 @@
-trojan://ad9c84af-e5aa-43e2-88df-7cfd99d4d0a0@bestcdn1.682637.xyz:443?security=tls&sni=d3-cdn.682637.xyz&type=ws&host=d3-cdn.682637.xyz&path=%2Fvideomuaawe#%E7%BE%8E%E5%9B%BD
