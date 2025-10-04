@@ -2,8 +2,8 @@ name: Fetch and Process Nodes
 
 on:
   schedule:
-    # 每天 UTC 时间 00:00 运行（北京时间 08:00）
-    - cron: '0 0 * * *'
+    # 每6小时运行一次
+    - cron: '0 */6 * * *'
   workflow_dispatch: # 允许手动触发
   push:
     branches: [ main ]
@@ -36,5 +36,5 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add nodes/
-        git diff --quiet && git diff --staged --quiet || git commit -m "Auto-update nodes data [$(date +'%Y-%m-%d %H:%M')]"
+        git diff --quiet && git diff --staged --quiet || git commit -m "Auto-update nodes data [$(date +'%Y-%m-%d %H:%M:%S')]"
         git push
