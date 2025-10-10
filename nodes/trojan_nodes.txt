@@ -1,1 +1,4 @@
-trojan://ad9c84af-e5aa-43e2-88df-7cfd99d4d0a0@bestcdn1.682637.xyz:443?security=tls&sni=d3-cdn.682637.xyz&type=ws&host=d3-cdn.682637.xyz&path=%2Fvideomuaawe#%E7%BE%8E%E5%9B%BD
+trojan://iwangjie@83.147.254.185:443?security=tls&sni=nodes.830901.xyz&type=ws&host=nodes.830901.xyz&path=%2F%3Fed%3D2560#%E7%BE%8E%E5%9B%BD
+trojan://iwangjie@138.124.118.34:443?security=tls&sni=nodes.830901.xyz&type=ws&host=nodes.830901.xyz&path=%2Fproxyip%3Dproxyip.fxxk.dedyn.io#%E7%BE%8E%E5%9B%BD
+trojan://iwangjie@135.125.232.253:2053?security=tls&sni=nodes.830901.xyz&type=ws&host=nodes.830901.xyz&path=%2F%3Fed%3D2560#%E7%BE%8E%E5%9B%BD
+trojan://iwangjie@141.94.68.216:2053?security=tls&sni=nodes.830901.xyz&type=ws&host=nodes.830901.xyz&path=%2F%3Fed%3D2560#%E7%BE%8E%E5%9B%BD
