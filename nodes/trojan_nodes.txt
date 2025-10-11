@@ -1,4 +1,5 @@
-trojan://iwangjie@83.147.254.185:443?security=tls&sni=nodes.830901.xyz&type=ws&host=nodes.830901.xyz&path=%2F%3Fed%3D2560#%E7%BE%8E%E5%9B%BD
 trojan://iwangjie@138.124.118.34:443?security=tls&sni=nodes.830901.xyz&type=ws&host=nodes.830901.xyz&path=%2Fproxyip%3Dproxyip.fxxk.dedyn.io#%E7%BE%8E%E5%9B%BD
 trojan://iwangjie@135.125.232.253:2053?security=tls&sni=nodes.830901.xyz&type=ws&host=nodes.830901.xyz&path=%2F%3Fed%3D2560#%E7%BE%8E%E5%9B%BD
 trojan://iwangjie@141.94.68.216:2053?security=tls&sni=nodes.830901.xyz&type=ws&host=nodes.830901.xyz&path=%2F%3Fed%3D2560#%E7%BE%8E%E5%9B%BD
+trojan://253bc477d4e43c209f2d427272968280@36.156.102.84:6752?security=tls&sni=www.nintendogames.net&type=tcp&headerType=none#%E7%BE%8E%E5%9B%BD
+trojan://iwangjie@83.147.254.185:443?security=tls&sni=nodes.830901.xyz&type=ws&host=nodes.830901.xyz&path=%2F%3Fed%3D2560#%E7%BE%8E%E5%9B%BD
