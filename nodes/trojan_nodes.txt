@@ -1,1 +1,2 @@
+trojan://bca467b8c15211d189008a93c7519d3b@58.152.53.42:443?security=tls&sni=www.nintendogames.net&type=tcp&headerType=none#%E7%BE%8E%E5%9B%BD%28yudou6677.top%20
 trojan://adbac894-90b9-4913-b77e-a715a8d4ebc8@oss-cn-shanghai.letssepub.com:20021?security=tls&sni=dingding-doc.com&type=tcp&headerType=none#%E7%BE%8E%E5%9B%BD%28yudou6677.top%20
