@@ -1,5 +1,2 @@
-trojan://iwangjie@141.94.68.216:2053?security=tls&sni=nodes.830901.xyz&type=ws&host=nodes.830901.xyz&path=%2F%3Fed%3D2560#%E7%BE%8E%E5%9B%BD%28yudou6677.top%20
+trojan://1b57001bd214304027025a740b6cf1ac@117.172.176.22:373?security=tls&sni=www.nintendogames.net&type=tcp&headerType=none#%E7%BE%8E%E5%9B%BD%28yudou6677.top%20
 trojan://adbac894-90b9-4913-b77e-a715a8d4ebc8@oss-cn-shanghai.letssepub.com:20021?security=tls&sni=dingding-doc.com&type=tcp&headerType=none#%E7%BE%8E%E5%9B%BD%28yudou6677.top%20
-trojan://e4e262d453466988575c397a30562337@117.172.176.23:2173?security=tls&sni=www.nintendogames.net&type=tcp&headerType=none#%E7%BE%8E%E5%9B%BD%28yudou6677.top%20
-trojan://iwangjie@135.125.232.253:2053?security=tls&sni=nodes.830901.xyz&type=ws&host=nodes.830901.xyz&path=%2F%3Fed%3D2560#%E7%BE%8E%E5%9B%BD%28yudou6677.top%20
-trojan://e4e262d453466988575c397a30562337@117.172.176.23:316?security=tls&sni=www.nintendogames.net&type=tcp&headerType=none#%E7%BE%8E%E5%9B%BD%28yudou6677.top%20
