@@ -1,5 +1,1 @@
-trojan://1b57001bd214304027025a740b6cf1ac@117.172.176.22:2173?security=tls&sni=www.nintendogames.net&type=tcp&headerType=none#%E7%BE%8E%E5%9B%BD%28yudou678.top%20
 trojan://adbac894-90b9-4913-b77e-a715a8d4ebc8@oss-cn-shanghai.letssepub.com:20021?security=tls&sni=dingding-doc.com&type=tcp&headerType=none#%E7%BE%8E%E5%9B%BD%28yudou6677.top%20
-trojan://1b57001bd214304027025a740b6cf1ac@117.172.176.22:4095?security=tls&sni=www.nintendogames.net&type=tcp&headerType=none#%E7%BE%8E%E5%9B%BD%28yudou678.top%20
-trojan://1b57001bd214304027025a740b6cf1ac@117.172.176.22:1334?security=tls&sni=www.nintendogames.net&type=tcp&headerType=none#%E7%BE%8E%E5%9B%BD%28yudou678.top%20
-trojan://e4e262d453466988575c397a30562337@117.172.176.22:4173?security=tls&sni=www.nintendogames.net&type=tcp&headerType=none#%E7%BE%8E%E5%9B%BD%28yudou678.top%20
