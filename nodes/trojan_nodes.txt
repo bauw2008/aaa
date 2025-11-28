@@ -1,2 +1,1 @@
-trojan://3208e968-b862-4e2e-ad90-2b49e7ce7afb@37.252.5.75:443?security=tls&sni=joss.gpj1.web.id&type=ws&host=joss.gpj1.web.id&path=%2FFree-VPN-CF-Geo-Project%2F37.252.5.75%3D443#%E7%BE%8E%E5%9B%BD%28yudou6677.top%20
-trojan://FDIypSwe64a3DA7un2R8DFjYXZO3NS05gKZTTOC8SxO0Fy3cqYg3EaFDA3ABaEYKNx39D@kuame.missionsec.us:443?security=tls&sni=kuame.missionsec.us&type=tcp&headerType=none#%E6%97%A5%E6%9C%AC%28yudou6677.top%20
+trojan://2cf6d686799e6fa95316394064f26c0a@58.152.110.120:443?security=tls&sni=www.nintendogames.net&type=tcp&headerType=none#%E9%A6%99%E6%B8%AF%28yudou6677.top%20
