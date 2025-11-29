@@ -1,1 +1,2 @@
 trojan://2cf6d686799e6fa95316394064f26c0a@58.152.110.120:443?security=tls&sni=www.nintendogames.net&type=tcp&headerType=none#%E9%A6%99%E6%B8%AF%28yudou6677.top%20
+trojan://Q9gofGxinwLv0TfDfdKmdttdPGxrhKQS@kr3.t.sgateway.link:5223?security=tls&sni=pod-kr-z1.psusercontent.com&type=tcp&headerType=none#%E7%BE%8E%E5%9B%BD%28yudou6677.top%20
