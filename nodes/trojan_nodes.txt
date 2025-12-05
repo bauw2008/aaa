@@ -1,2 +1,1 @@
-trojan://Q9gofGxinwLv0TfDfdKmdttdPGxrhKQS@hk3.t.sgateway.link:5223?security=tls&sni=pod-hk-z1.psusercontent.com&type=tcp&headerType=none#%E7%BE%8E%E5%9B%BD%28yudou6677.top%20
-trojan://Q9gofGxinwLv0TfDfdKmdttdPGxrhKQS@psg2-ag.t.sgateway.link:5223?security=tls&sni=pod-kr-g1.psusercontent.com&type=tcp&headerType=none#%E7%BE%8E%E5%9B%BD%28yudou6677.top%20
+trojan://79314e99f0a473fe86efc7827942ad00@58.152.18.192:443?security=tls&sni=www.nintendogames.net&type=tcp&headerType=none#%E9%A6%99%E6%B8%AF%28yudou6677.top%20
