@@ -1,1 +1,1 @@
-trojan://79314e99f0a473fe86efc7827942ad00@58.152.18.192:443?security=tls&sni=www.nintendogames.net&type=tcp&headerType=none#%E9%A6%99%E6%B8%AF%28yudou6677.top%20
+trojan://3c4e10af98c30972@23.247.137.64:443?security=tls&sni=n2.gladns.com&type=grpc&serviceName=db&mode=gun#%E7%BE%8E%E5%9B%BD%28yudou6677.top%20
